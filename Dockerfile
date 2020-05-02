@@ -4,4 +4,5 @@ ENV LANG=en_US.UTF-8
 CMD ["/usr/bin/bash"]
 
 # Install all required packages
-CMD bash install_deps.sh
+COPY install_deps.sh /tmp/
+RUN bash /tmp/install_deps.sh
