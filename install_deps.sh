@@ -8,11 +8,11 @@ sudo pacman -Syyu --noconfirm
 
 # Install basic packages
 sudo pacman -S --noconfirm base-devel \
-                 git wget multilib-devel \
+                 git wget  \
                  cmake svn lzip patchelf \
                  inetutils python2 lld llvm \
-                 clang gcc g++ bc ccache
+                 clang gcc g++ bc ccache multilib-devel
 
-sudo yay -S --noconfirm ncurses5-compat-libs \
+yay -S --noconfirm ncurses5-compat-libs \
                 lib32-ncurses5-compat-libs \
                 aosp-devel xml2 lineageos-devel
