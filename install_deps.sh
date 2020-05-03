@@ -13,7 +13,8 @@ sudo pacman -S --noconfirm base-devel \
                  inetutils python2 lld llvm \
                  clang gcc g++ bc ccache multilib-devel glibc
 
-export PATH=/usr/bin/gcc:$PATH
+export PATH=/usr/bin/:$PATH
+export LD_LIBRARY_PATH=/usr/lib64/:$LD_LIBRARY_PATH
 
 yay -S --noconfirm ncurses5-compat-libs \
                 lib32-ncurses5-compat-libs \
