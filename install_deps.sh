@@ -13,15 +13,6 @@ sudo pacman -S --noconfirm base-devel \
                  inetutils python2 lld llvm \
                  clang gcc g++ bc ccache
 
-export PATH=/usr/bin/gcc:$PATH
-cd /home/builder
-
-# Install ncurses5-compat-libs, lib32-ncurses5-compat-libs, aosp-devel, xml2, and lineageos-devel
-for package in ncurses5-compat-libs lib32-ncurses5-compat-libs aosp-devel xml2 lineageos-devel; do
-        git clone https://aur.archlinux.org/"${package}"
-        cd ${package} || continue
-        makepkg -sif --noconfirm --skippgpcheck
-        #sudo pacman -U --noconfirm /home/builder/pkg/*.tar.xz
-        cd - || break
-        rm -rf "${package}"
-    done
+sudo yay -S --noconfirm ncurses5-compat-libs \
+                lib32-ncurses5-compat-libs \
+                aosp-devel xml2 lineageos-devel

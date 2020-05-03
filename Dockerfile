@@ -32,7 +32,7 @@ COPY --from=base /home/builder/yay/*.pkg.tar.xz /home/builder/pkg/
 
 RUN sudo pacman -U --noconfirm /home/builder/pkg/*.pkg.tar.xz
 
-RUN pacman -Syuq --noconfirm git base-devel sudo
+RUN sudo pacman -Syuq --noconfirm git base-devel sudo
 
 RUN echo "Defaults         lecture = never" > /etc/sudoers.d/privacy \
  && echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel \
