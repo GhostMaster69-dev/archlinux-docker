@@ -32,8 +32,6 @@ COPY --from=base /home/builder/yay/*.pkg.tar.xz /home/builder/pkg/
 
 RUN sudo pacman -U --noconfirm /home/builder/pkg/*.pkg.tar.xz
 
-RUN sudo pacman -Syuq --noconfirm git base-devel sudo
-
 # Install all required packages
 COPY install_deps.sh /tmp/
 RUN bash /tmp/install_deps.sh
