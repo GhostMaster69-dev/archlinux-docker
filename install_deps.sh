@@ -11,7 +11,7 @@ sudo pacman -S --noconfirm base-devel \
                  git wget  \
                  cmake svn lzip patchelf \
                  inetutils python2 lld llvm \
-                 clang gcc g++ bc ccache multilib-devel
+                 clang gcc g++ bc ccache multilib-devel glibc
 
 export PATH=/usr/bin/gcc:$PATH
 
