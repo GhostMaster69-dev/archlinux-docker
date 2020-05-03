@@ -13,6 +13,8 @@ sudo pacman -S --noconfirm base-devel \
                  inetutils python2 lld llvm \
                  clang gcc g++ bc ccache multilib-devel
 
+export PATH=/usr/bin/gcc:$PATH
+
 yay -S --noconfirm ncurses5-compat-libs \
                 lib32-ncurses5-compat-libs \
                 aosp-devel xml2 lineageos-devel
