@@ -34,9 +34,9 @@ RUN sudo pacman -U --noconfirm /home/builder/pkg/*.pkg.tar.xz
 
 RUN sudo pacman -Syuq --noconfirm git base-devel sudo
 
-RUN echo "Defaults         lecture = never" > /etc/sudoers.d/privacy \
- && echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel \
- && useradd -m -G wheel -s /bin/bash builder
+RUN sudo echo "Defaults         lecture = never" > /etc/sudoers.d/privacy \
+ && sudo echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel \
+ && sudo useradd -m -G wheel -s /bin/bash builder
 
 USER builder
 RUN mkdir -p /home/builder
