@@ -9,6 +9,6 @@ sudo pacman -Syyu --noconfirm
 # Install basic packages
 sudo pacman -S --noconfirm \
                  wget  \
-                 cmake svn lzip patchelf \
+                 cmake svn lzip patchelf zip \
                  inetutils python2 lld llvm \
                  clang bc ccache multilib-devel glibc
