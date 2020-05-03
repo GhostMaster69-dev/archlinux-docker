@@ -13,7 +13,7 @@ sudo pacman -S --noconfirm base-devel \
                  inetutils python2 lld llvm \
                  clang gcc g++ bc ccache
 
-#export PATH=/usr/bin/gcc:$PATH
+export PATH=/usr/bin/gcc:$PATH
 cd /home/builder
 
 # Install ncurses5-compat-libs, lib32-ncurses5-compat-libs, aosp-devel, xml2, and lineageos-devel

@@ -1,13 +1,42 @@
-FROM scratch
-ADD archlinux.tar /
-ENV LANG=en_US.UTF-8
-CMD ["/usr/bin/bash"]
+FROM archlinux/base as base
 
 RUN pacman -Syuq --noconfirm git base-devel sudo
 
-#RUN echo "Defaults         lecture = never" > /etc/sudoers.d/privacy \
- #&& echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel \
- #&& useradd -m -G wheel -s /bin/bash builder
+RUN echo "Defaults         lecture = never" > /etc/sudoers.d/privacy \
+ && echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel \
+ && useradd -m -G wheel -s /bin/bash builder
+
+USER builder
+WORKDIR /home/builder
+
+RUN git clone https://aur.archlinux.org/yay.git \
+ && cd yay \
+ && makepkg -s --noconfirm
+
+######
+# Runtime container
+######
+FROM archlinux/base
+
+RUN pacman -Syuq --noconfirm git base-devel sudo namcap \
+ && rm -rf /var/cache/pacman/pkg/*
+
+RUN echo "Defaults         lecture = never" > /etc/sudoers.d/privacy \
+ && echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel \
+ && useradd -m -G wheel -s /bin/bash builder
+
+USER builder
+WORKDIR /home/builder
+
+COPY --from=base /home/builder/yay/*.pkg.tar.xz /home/builder/pkg/
+
+RUN sudo pacman -U --noconfirm /home/builder/pkg/*.pkg.tar.xz
+
+RUN pacman -Syuq --noconfirm git base-devel sudo
+
+RUN echo "Defaults         lecture = never" > /etc/sudoers.d/privacy \
+ && echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel \
+ && useradd -m -G wheel -s /bin/bash builder
 
 USER builder
 RUN mkdir -p /home/builder
