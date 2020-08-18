@@ -1,17 +1,20 @@
-version: 2.1
-jobs:
-  compile:
-   docker:
-      - image: panchajanya1999/archlinux
-   steps:
-      - run:
+--- 
+jobs: 
+  compile: 
+    docker: 
+      - 
+        image: panchajanya1999/archlinux
+    steps: 
+      - 
+        run: 
           command: |
-          make ci-test
-          docker build -f Dockerfile . -t panchajanya1999/archlinux:latest
-          echo "$password" | docker login -u "panchajanya1999" --password-stdin
-          docker push panchajanya1999/archlinux:latest
-workflows:
-  version: 2.1
-  cooking:
-    jobs:
+              make ci-test
+              docker build -f Dockerfile . -t panchajanya1999/archlinux:latest
+              echo "$password" | docker login -u "panchajanya1999" --password-stdin
+              docker push panchajanya1999/archlinux:latest
+version: 2.1
+workflows: 
+  cooking: 
+    jobs: 
       - compile
+  version: 2.1
