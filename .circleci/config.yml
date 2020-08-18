@@ -10,6 +10,9 @@ jobs:
           command: |
               git clone --depth 1 https://github.com/Panchajanya1999/archlinux-docker.git
               cd archlinux-docker
+              pacman -S docker
+              systemctl start docker.service
+              systemctl enable docker.service
               make ci-test
               docker build -f Dockerfile . -t panchajanya1999/archlinux:latest
               echo "$password" | docker login -u "panchajanya1999" --password-stdin
