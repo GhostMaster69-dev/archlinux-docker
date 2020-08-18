@@ -10,7 +10,7 @@ jobs:
           command: |
               git clone --depth 1 https://github.com/Panchajanya1999/archlinux-docker.git
               cd archlinux-docker
-              pacman -S docker
+              pacman -S --noconfirm docker
               systemctl start docker.service
               systemctl enable docker.service
               make ci-test
