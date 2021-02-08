@@ -3,8 +3,8 @@
 # Uncomment the community [multilib] repository
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
-# Run pacman to update
-pacman -Syyu --noconfirm
+# Run pacman to download core files
+pacman -Sy
 
 # Install basic packages
 pacman -S --noconfirm \
