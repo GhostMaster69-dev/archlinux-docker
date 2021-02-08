@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Uncomment the community [multilib] repository
-sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-
 # Run pacman to download core files
 pacman -Sy
 
